@@ -2,155 +2,239 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Python-Tutor – Installationsanleitung</title>
+<title>Python-Tutor – Anleitung</title>
 <style>
-  @page { size: A4; margin: 18mm 18mm 20mm 18mm; }
-  :root { --accent: #2f6fb3; --soft: #eef4fb; --warn: #fff6e0; --warnline: #e0a800; --ink: #1d2733; --muted: #5b6774; }
+  @font-face { font-family: "Lexend"; font-weight: 400; src: url("fonts/lexend-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Lexend"; font-weight: 500; src: url("fonts/lexend-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Lexend"; font-weight: 600; src: url("fonts/lexend-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Lexend"; font-weight: 700; src: url("fonts/lexend-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); }
+
+  :root {
+    --grund: #f2f3f9; --flaeche: #ffffff; --flaeche-2: #e9ebf5; --linie: #dcdfec;
+    --text: #171a33; --text-2: #4c5272;
+    --kobalt: #3043d0; --kobalt-2: #2536b0; --kobalt-zart: #e4e8ff; --auf-kobalt-zart: #1f2d99;
+    --mango: #ffb21e; --mango-zart: #fff0cc; --warn-text: #8a5200;
+    --ok: #11745a; --ok-zart: #dcf5ec;
+  }
+  @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
-  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; margin: 0; }
-  h1 { font-size: 24pt; margin: 0 0 2mm; color: var(--accent); letter-spacing: -0.3px; }
-  .sub { color: var(--muted); margin: 0 0 6mm; font-size: 11pt; }
-  h2 { font-size: 14pt; color: var(--accent); margin: 7mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.5px solid var(--soft); break-after: avoid; }
-  h3 { font-size: 11.5pt; margin: 4mm 0 1.5mm; break-after: avoid; }
-  p { margin: 0 0 2.5mm; }
-  ol, ul { margin: 0 0 3mm; padding-left: 6mm; }
-  li { margin-bottom: 1.2mm; }
-  code { font-family: "DejaVu Sans Mono", monospace; font-size: 9pt; background: #f1f3f5; padding: 0.3mm 1.2mm; border-radius: 1mm; }
-  .box { background: var(--soft); border-left: 3px solid var(--accent); padding: 3mm 4mm; border-radius: 1.5mm; margin: 3mm 0; break-inside: avoid; }
-  .warn { background: var(--warn); border-left-color: var(--warnline); }
-  .box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
-  .new { display: inline-block; background: var(--accent); color: #fff; font-size: 7.5pt; font-weight: 700; padding: 0.2mm 1.6mm; border-radius: 1mm; vertical-align: 1px; margin-right: 1mm; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 2mm 0 3mm; }
-  .card { border: 1px solid #dbe3ec; border-radius: 2mm; padding: 3mm; break-inside: avoid; }
-  .card b { color: var(--accent); }
-  section { break-inside: auto; }
-  .keep { break-inside: avoid; }
-  .footer { margin-top: 8mm; color: var(--muted); font-size: 8.5pt; border-top: 1px solid #e3e8ee; padding-top: 2mm; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: "Lexend", "Segoe UI", sans-serif; color: var(--text); font-size: 10pt; line-height: 1.42; background: var(--grund); }
+  a { color: var(--kobalt); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid #b9c2ff; }
+  code, .mono { font-family: "JetBrains Mono", Consolas, monospace; font-size: .92em; background: var(--flaeche-2); padding: 1px 6px; border-radius: 6px; }
+
+  .seite { width: 210mm; height: 297mm; padding: 12mm 15mm 12mm; position: relative; overflow: hidden; page-break-after: always; background: var(--grund); }
+  .seite:last-child { page-break-after: auto; }
+
+  .kopf { display: flex; align-items: center; gap: 14px; margin-bottom: 5mm; }
+  .logo { width: 46px; height: 46px; border-radius: 14px; background: var(--kobalt); color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 17pt; letter-spacing: -1px; }
+  h1 { margin: 0; font-size: 22pt; line-height: 1.1; font-weight: 700; letter-spacing: -.3px; }
+  .unter { margin: 2px 0 0; color: var(--text-2); font-size: 10pt; }
+
+  .karte { background: var(--flaeche); border-radius: 18px; padding: 12px 18px; margin-bottom: 4mm; box-shadow: 0 1px 3px rgba(23,26,51,.06), 0 8px 24px -14px rgba(23,26,51,.22); }
+  .zeile { display: flex; gap: 14px; align-items: flex-start; }
+  .nr { flex: none; width: 30px; height: 30px; border-radius: 10px; background: var(--kobalt-zart); color: var(--auf-kobalt-zart); display: grid; place-items: center; font-weight: 700; font-size: 11pt; }
+  h2 { margin: 2px 0 3px; font-size: 13pt; font-weight: 600; }
+  p { margin: 0 0 5px; }
+  ul, ol { margin: 4px 0 4px 18px; padding: 0; }
+  li { margin-bottom: 3px; }
+
+  .knopf { display: inline-block; background: var(--kobalt); color: #fff; border-radius: 999px; padding: 6px 16px; font-weight: 600; border: 0; font-size: 10.5pt; }
+  .knopf.mango { background: var(--mango); color: #1d1503; }
+  .stufen { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0 2px; }
+  .pfeil { color: var(--text-2); font-weight: 600; }
+  .stufe { background: var(--flaeche-2); border-radius: 10px; padding: 5px 11px; font-weight: 500; font-size: 10pt; }
+  .stufe b { color: var(--kobalt); }
+
+  .hinweis { display: flex; gap: 10px; border-radius: 12px; padding: 7px 12px; margin-top: 6px; font-size: 9.5pt; }
+  .hinweis.warn { background: var(--mango-zart); color: #4a3200; }
+  .hinweis.ok { background: var(--ok-zart); color: #0b4a3a; }
+  .hinweis.info { background: var(--kobalt-zart); color: var(--auf-kobalt-zart); }
+  .hinweis .sym { flex: none; font-weight: 700; }
+
+  .linkbox { background: var(--kobalt); color: #fff; border-radius: 18px; padding: 15px 20px; margin-bottom: 5mm; }
+  .linkbox .klein { color: #c9d0ff; font-size: 9.5pt; margin: 0 0 3px; }
+  .linkbox a { color: #fff; border-bottom: 2px solid var(--mango); font-size: 12.5pt; font-weight: 600; word-break: break-all; }
+  .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .zwei .karte { margin-bottom: 0; }
+  .neu { display: inline-block; background: var(--mango); color: #1d1503; border-radius: 999px; padding: 1px 9px; font-size: 8pt; font-weight: 700; vertical-align: 2px; margin-left: 6px; }
+  .funktionen { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 4mm; }
+  .funktionen .karte { margin-bottom: 0; padding: 11px 16px; }
+  .funktionen h2 { font-size: 11.5pt; margin: 0 0 3px; }
+  .funktionen p { margin: 0; font-size: 9.5pt; }
+  .funktionen .karte.frisch { box-shadow: inset 4px 0 0 var(--mango), 0 1px 3px rgba(23,26,51,.06), 0 8px 24px -14px rgba(23,26,51,.22); }
+  .fuss { position: absolute; left: 15mm; right: 15mm; bottom: 9mm; display: flex; justify-content: space-between; color: var(--text-2); font-size: 8.5pt; border-top: 1px solid var(--linie); padding-top: 6px; }
 </style>
 </head>
 <body>
 
-<h1>Python-Tutor</h1>
-<p class="sub">Installationsanleitung · Stand: Version 2.6.0 (November 2026)</p>
+<!-- Seite 1 -->
+<section class="seite">
+  <div class="kopf">
+    <div class="logo">&lt;/&gt;</div>
+    <div>
+      <h1>Python-Tutor</h1>
+      <p class="unter">Anleitung: herunterladen, installieren, loslegen · Stand Version 2.6.0</p>
+    </div>
+  </div>
 
-<p>Der Python-Tutor ist ein Programm zum Python-Lernen, ganz ohne Vorwissen. Du bekommst Lektionen zu allen
-Grundthemen (von <code>print</code> bis zu Klassen), viele Aufgaben aus dem Alltag (Mensa, WG-Kasse, Kino …), einen
-Schritt-für-Schritt-Debugger und eine Probeklausur. Python musst du nicht extra installieren, das bringt das Programm mit.</p>
+  <div class="linkbox">
+    <p class="klein">Hier lädst du das Programm herunter (Windows):</p>
+    <a href="https://github.com/MoritzScharf/python-tutor-app/releases/latest">github.com/MoritzScharf/python-tutor-app/releases/latest</a>
+  </div>
 
-<h2>Was gibt es Neues?</h2>
-<div class="grid">
-  <div class="card"><b>Zeichnen mit der Schildkröte</b> <span class="new">2.6</span><br>Neue Aufgaben, die Seite „Frei zeichnen“ und die Zeichnung im Schritt-für-Schritt-Modus.</div>
-  <div class="card"><b>Code-Puzzles „Code ordnen“</b> <span class="new">2.5</span><br>Bring durcheinandergewürfelte Zeilen in die richtige Reihenfolge und Einrückung. Ein Puzzle in jedem Thema der Kapitel 1–3.</div>
-  <div class="card"><b>Aufwärm-Runde</b> <span class="new">2.4</span><br>Gelöste Aufgaben kommen nach 1, 3, 7 und 14 Tagen kurz zurück (höchstens 5 am Tag). Zu finden unter „Üben und wiederholen“.</div>
-  <div class="card"><b>Erst raten, dann sehen</b> <span class="new">2.4</span><br>Ein Schalter im Debugger: Er fragt dich vor manchen Schritten, welchen Wert eine Variable bekommt.</div>
-</div>
-<p>Nach jedem Update zeigt dir das Programm kurz, was neu ist.</p>
+  <div class="karte">
+    <div class="zeile"><div class="nr">1</div><div>
+      <h2>Herunterladen</h2>
+      <p>Öffne den Link oben. Scrolle zu <b>„Assets“</b> und klick auf die Datei <code>Python-Tutor-Setup-….exe</code>. Der Download ist etwa 120&nbsp;MB groß.</p>
+    </div></div>
+  </div>
 
-<h2>1. Herunterladen</h2>
-<ol>
-  <li>Öffne <b>github.com/MoritzScharf/python-tutor-app/releases</b></li>
-  <li>Nimm ganz oben die neueste Version und klick unter „Assets“ auf<br>
-      <b>Windows:</b> <code>Python-Tutor-Setup-2.6.0.exe</code> (die Nummer kann bei einer neueren Version höher sein)</li>
-</ol>
-<div class="box warn">
-  <p><b>Mac:</b> Für den Mac gibt es gerade keine Datei zum Herunterladen. Sobald es eine gibt, steht bei der Version
-  eine <code>.dmg</code>-Datei (<code>arm64</code> für Macs mit Apple-Chip M1/M2/M3 …, <code>x64</code> für Intel-Macs).
-  Die Mac-Anleitung steht unten schon bereit.</p>
-</div>
+  <div class="karte">
+    <div class="zeile"><div class="nr">2</div><div>
+      <h2>Installieren</h2>
+      <p>Doppelklick auf die heruntergeladene Datei. Du brauchst keine Administratorrechte, die Installation läuft von selbst.</p>
+      <div class="hinweis warn"><div class="sym">!</div><div>
+        <b>Windows warnt dich einmal</b> („Der Computer wurde durch Windows geschützt“). Das ist normal, das Programm ist nur nicht bei Microsoft „signiert“. Klick auf <b>„Weitere Informationen“</b> und dann auf <b>„Trotzdem ausführen“</b>.
+      </div></div>
+      <div class="stufen">
+        <span class="stufe">Doppelklick auf die .exe</span><span class="pfeil">→</span>
+        <span class="stufe"><b>Weitere Informationen</b></span><span class="pfeil">→</span>
+        <span class="stufe"><b>Trotzdem ausführen</b></span>
+      </div>
+    </div></div>
+  </div>
 
-<h2>2. Installieren</h2>
-<p>Das Programm ist (noch) nicht bei Microsoft oder Apple „signiert“. Deshalb warnt dein Rechner beim ersten Start
-einmal. Das ist normal, das Programm ist in Ordnung.</p>
+  <div class="karte">
+    <div class="zeile"><div class="nr">3</div><div>
+      <h2>Loslegen</h2>
+      <p>Nach der Installation startet der <b>Python-Tutor</b> von selbst. Du findest ihn danach im Startmenü und auf dem Desktop. Python bringt das Programm selbst mit, du musst nichts weiter installieren.</p>
+      <ul>
+        <li><b>Links</b> wählst du ein Kapitel und ein Thema. Dort stehen Erklärungen und Beispiele.</li>
+        <li>In jeder <b>Aufgabe</b> schreibst du Code, klickst auf <span class="knopf" style="padding:2px 11px;font-size:9.5pt">Ausführen</span> und dann auf <span class="knopf" style="padding:2px 11px;font-size:9.5pt">Prüfen</span>. Die Tests zeigen dir, was noch fehlt.</li>
+        <li>Mit <span class="knopf mango" style="padding:2px 11px;font-size:9.5pt">Schritt für Schritt</span> siehst du, wie dein Programm Zeile für Zeile abläuft.</li>
+        <li>Unten links kannst du zwischen <b>System</b>, <b>Hell</b> und <b>Dunkel</b> wählen.</li>
+      </ul>
+    </div></div>
+  </div>
 
-<div class="keep">
-<h3>Windows</h3>
-<ol>
-  <li>Doppelklick auf die heruntergeladene <code>.exe</code>-Datei. Du brauchst keine Administratorrechte.</li>
-  <li>Erscheint <b>„Der Computer wurde durch Windows geschützt“</b>: Klick auf <b>„Weitere Informationen“</b> und dann
-      auf <b>„Trotzdem ausführen“</b>.</li>
-  <li>Die Installation läuft von selbst. Danach findest du <b>Python-Tutor</b> im Startmenü und auf dem Desktop.</li>
-</ol>
-</div>
+  <div class="hinweis ok" style="margin-top:0"><div class="sym">✓</div><div>
+    <b>Dein Lernstand bleibt erhalten.</b> Fortschritt und Code liegen im Ordner <code>Dokumente\Python-Tutor-Daten</code>. Bitte nicht löschen. Bei Updates und beim Deinstallieren bleibt er unangetastet.
+  </div></div>
 
-<div class="keep">
-<h3>Mac (sobald verfügbar)</h3>
-<ol>
-  <li>Doppelklick auf die <code>.dmg</code>-Datei und zieh <b>Python-Tutor</b> in den Ordner „Programme“.</li>
-  <li>Doppelklick auf <b>Python-Tutor</b> in „Programme“. Der Mac meldet, dass er das Programm nicht prüfen konnte.
-      Klick auf <b>„Fertig“</b> (oder „OK“).</li>
-  <li>Öffne <b>Systemeinstellungen → Datenschutz &amp; Sicherheit</b>, scroll ganz nach unten und klick bei der Meldung
-      zum Python-Tutor auf <b>„Dennoch öffnen“</b>. Passwort oder Touch ID eingeben und mit <b>„Öffnen“</b> bestätigen.
-      Das musst du nur beim ersten Start tun.</li>
-  <li>Auf macOS 14 und älter geht auch: <b>Rechtsklick</b> auf das Programm → <b>„Öffnen“</b> → noch einmal
-      <b>„Öffnen“</b>.</li>
-</ol>
-</div>
+  <div class="karte" style="margin-top:4mm">
+    <h2 style="margin-top:0">Nutzungsdaten (freiwillig)</h2>
+    <p style="margin:2px 0 4px">Das Programm fragt einmal, ob es melden darf, wie du lernst, auch Fehlermeldungen. Die Meldungen sind <b>pseudonym</b>: ohne Name, ohne IP-Adresse, nur mit einer Zufallsnummer. Nie dein Code, deine Eingaben, Pfade oder dein Name.</p>
+    <ul style="margin:0;padding-left:18px">
+      <li>Speicherort: Cloudflare (USA, Server in der EU), nach 180 Tagen automatisch gelöscht.</li>
+      <li>Ausschalten wirkt nur für die Zukunft (links unten „Datenschutz und Statistik“). Verantwortlich: der Entwickler dieses Programms; Fragen an die Person, von der du es hast.</li>
+    </ul>
+  </div>
 
-<h2>3. Erster Start</h2>
-<ul>
-  <li><b>Nutzungsdaten:</b> Das Programm fragt dich einmal, ob es anonyme Nutzungsdaten senden darf. Das ist
-      freiwillig. Es werden nie dein Code, deine Eingaben, dein Name oder deine IP-Adresse gesendet. Du kannst es
-      jederzeit unter <b>„Datenschutz und Statistik“</b> abschalten.</li>
-  <li><b>Alter Lernstand aus VS Code?</b> Das Programm sucht beim ersten Start kurz nach der alten VS-Code-Fassung.
-      Findet es sie, fragt es oben <b>„Übernehmen?“</b>. Sonst klick links auf <b>„Lernstand aus Ordner übernehmen …“</b>
-      und wähl den alten Ordner <code>Python-Tutor</code>. Im alten Ordner ändert sich dabei nichts.</li>
-</ul>
+  <div class="fuss"><span>Python-Tutor</span><span>Seite 1 von 3</span></div>
+</section>
 
-<h2>4. Deine Daten</h2>
-<div class="box">
-  <p>Dein Fortschritt und dein Code liegen in <b><code>Dokumente/Python-Tutor-Daten</code></b> (darin
-  <code>meine-daten</code>). Der Ordner bleibt bei Updates und beim Deinstallieren erhalten: <b>nicht löschen!</b>
-  Willst du an einem anderen Rechner weitermachen, nimm den Ordner mit.</p>
-</div>
-<p>Unter <b>„Einstellungen“</b> gibt es <b>„App zurücksetzen“</b>, falls du ganz von vorne anfangen willst. Vorher
-fragt das Programm noch einmal nach und legt automatisch eine Sicherung an.</p>
+<!-- Seite 2 -->
+<section class="seite">
+  <div class="kopf">
+    <div class="logo">&lt;/&gt;</div>
+    <div>
+      <h1>Was du alles machen kannst</h1>
+      <p class="unter">Alles, was im Programm steckt, mit den Neuerungen bis Version 2.6.0</p>
+    </div>
+  </div>
 
-<h2>5. Neue Version</h2>
-<ul>
-  <li><b>Windows:</b> Das Programm lädt neue Versionen selbst. Oben erscheint ein Hinweis. Klick auf
-      <b>„Jetzt neu starten“</b>, dann wird die neue Version sofort installiert und das Programm startet neu. Oder du
-      wartest einfach bis zum nächsten Start.</li>
-  <li><b>Mac:</b> Oben steht ein Hinweis mit <b>„Herunterladen“</b>. Neue <code>.dmg</code> laden und das Programm
-      wieder in „Programme“ ziehen (alte Version ersetzen).</li>
-</ul>
-<p>Dein Lernstand bleibt dabei immer erhalten.</p>
+  <div class="funktionen">
+    <div class="karte">
+      <h2>Lektionen und Aufgaben</h2>
+      <p>8 Kapitel von <code>print</code> bis zu Klassen und über 180 Aufgaben aus dem Alltag: Mensa, WG-Kasse, Kino …</p>
+    </div>
+    <div class="karte">
+      <h2>Probeklausur</h2>
+      <p>Links unter <b>„Probeklausur“</b>: wie eine echte Klausur, mit Zeit und Auswertung am Ende.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Zeichnen mit der Schildkröte<span class="neu">NEU 2.6</span></h2>
+      <p>Neue Aufgaben, bei denen dein Code ein Bild malt. Auf der Seite <b>„Frei zeichnen“</b> probierst du einfach aus. Auch im Schritt-für-Schritt-Modus siehst du, wie die Zeichnung entsteht.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Code ordnen<span class="neu">NEU 2.5</span></h2>
+      <p>Code-Puzzles: Die Zeilen eines fertigen Programms sind durcheinander. Bring sie in die richtige Reihenfolge und Einrückung, mit Maus oder Tastatur. In jedem Thema der Kapitel 1–3.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Aufwärm-Runde<span class="neu">NEU 2.4</span></h2>
+      <p>Gelöste Aufgaben kommen nach 1, 3, 7 und 14 Tagen kurz zurück, höchstens 5 am Tag. Links unter <b>„Üben und wiederholen“</b>. Dein gespeicherter Code bleibt dabei unberührt.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Erst raten, dann sehen<span class="neu">NEU 2.4</span></h2>
+      <p>Ein Schalter im <span class="knopf mango" style="padding:1px 9px;font-size:8.5pt">Schritt für Schritt</span>-Modus: Er fragt dich vorher, welchen Wert eine Variable bekommt oder was ausgegeben wird.</p>
+    </div>
+  </div>
 
-<h2>6. Claude als Lernhilfe (freiwillig)</h2>
-<p>Die Knöpfe <b>„Frag Claude“</b> und <b>„Erklär mir den Fehler“</b> öffnen Claude mit einer fertigen Frage. Du musst
-sie nur noch mit <b>Enter</b> abschicken. Dafür brauchst du ein eigenes Claude-Konto (ein Gratis-Konto reicht). Ist
-<b>Claude Desktop</b> installiert, öffnet sich das, sonst claude.ai im Browser. Klappt das nicht, ist die Frage
-kopiert: in Claude mit <b>Strg+V</b> (Mac: <b>Cmd+V</b>) einfügen und Enter drücken.</p>
+  <div class="hinweis info" style="margin:0 0 4mm"><div class="sym">i</div><div>Nach jedem Update zeigt dir das Programm einmal kurz, was neu ist.</div></div>
 
-<div class="keep">
-<h3>Erweiterung für Claude Desktop</h3>
-<p>Damit sieht Claude, an welcher Aufgabe du sitzt, und kann dir Zusatzaufgaben anlegen. Klick im Programm links auf
-<b>„Claude verbinden“</b> und folge den Schritten:</p>
-<ol>
-  <li><b>Claude Desktop</b> öffnen → <b>Einstellungen → Erweiterungen</b>.</li>
-  <li><b>„Erweiterung installieren…“</b> (manchmal unter „Erweiterte Einstellungen“) und die Datei
-      <code>python-tutor.mcpb</code> wählen oder ins Fenster ziehen. Wo sie liegt, zeigt dir im Programm der Knopf
-      <b>„Datei im Ordner zeigen“</b>.</li>
-  <li>Claude Desktop <b>neu starten</b>, dann im Programm auf <b>„Verbindung prüfen“</b> klicken. Dort steht danach
-      „Verbunden“.</li>
-</ol>
-<p>Oben in Claude steht dann eine Warnung, die ist normal. Steht dort „Cowork“, wähl „Chat“. Geht die Erweiterung nicht,
-funktionieren die Knöpfe trotzdem. Zusatzaufgaben fügst du dann unter „Extra von Claude“ mit
-<b>„Aufgabe aus Zwischenablage einfügen“</b> ein.</p>
-</div>
+  <div class="zwei">
+    <div class="karte">
+      <h2 style="margin-top:0">Neue Version</h2>
+      <p>Das Programm holt neue Versionen <b>selbst</b>. Oben erscheint ein Hinweis:</p>
+      <div class="stufen"><span class="knopf" style="padding:3px 13px;font-size:9.5pt">Jetzt neu starten</span></div>
+      <p style="margin-top:5px">installiert sie sofort. Oder du wartest einfach bis zum nächsten Start. Dein Lernstand bleibt immer erhalten.</p>
+    </div>
+    <div class="karte">
+      <h2 style="margin-top:0">Alten Lernstand mitnehmen</h2>
+      <p>Hast du schon die ältere Fassung in VS Code benutzt? Beim ersten Start fragt das Programm <b>„Übernehmen?“</b>. Klick auf <b>Übernehmen</b>.</p>
+      <p>Wird der Ordner nicht gefunden: links auf <b>„Lernstand aus Ordner übernehmen …“</b> und den alten Ordner <code>Python-Tutor</code> wählen.</p>
+    </div>
+  </div>
 
-<h2>7. Wenn etwas nicht klappt</h2>
-<ul>
-  <li><b>Windows oder macOS warnt beim Start:</b> Siehe Schritt 2. Beim ersten Start ist das normal.</li>
-  <li><b>Die Frage kommt nicht in Claude an:</b> Sie ist kopiert. Mit <b>Strg+V</b> (Mac: <b>Cmd+V</b>) einfügen und
-      Enter drücken.</li>
-  <li><b>„Noch nicht verbunden“:</b> Claude Desktop nach dem Installieren der Erweiterung ganz neu starten, dann noch
-      einmal <b>„Verbindung prüfen“</b>.</li>
-  <li><b>„Claude Desktop ist auf diesem Rechner nicht zu finden“:</b> Claude Desktop installieren oder die Knöpfe mit
-      dem Browser nutzen.</li>
-  <li><b>Fehlermeldung oder anderes Problem:</b> Sag der Person Bescheid, von der du den Link hast, am besten mit einem
-      Foto der Meldung.</li>
-</ul>
+  <div class="karte" style="margin-top:4mm">
+    <h2 style="margin-top:0">Ganz von vorne anfangen</h2>
+    <p>Unter <b>„Einstellungen“</b> → <b>„App zurücksetzen …“</b>. Das Programm fragt vorher noch einmal nach und legt automatisch eine <b>Sicherung</b> deines Lernstands an.</p>
+  </div>
 
-<p class="footer">Python-Tutor · Anleitung für Version 2.6.0 · github.com/MoritzScharf/python-tutor-app</p>
+  <div class="fuss"><span>Python-Tutor</span><span>Seite 2 von 3</span></div>
+</section>
+
+<!-- Seite 3 -->
+<section class="seite">
+  <div class="kopf">
+    <div class="logo">&lt;/&gt;</div>
+    <div>
+      <h1>Hilfe von Claude</h1>
+      <p class="unter">Optional: mit deinem eigenen Claude-Konto</p>
+    </div>
+  </div>
+
+  <div class="karte">
+    <p>Claude (die KI von Anthropic) gibt dir Denkanstöße und Zusatzaufgaben. Das Programm benutzt dafür <b>dein eigenes Konto</b>. Ein Gratis-Konto reicht (es gelten die Gratis-Limits von Claude).</p>
+    <p><b>Einfach:</b> Die Knöpfe <b>„Frag Claude“</b> und <b>„Erklär mir den Fehler“</b> öffnen Claude mit einer fertigen Frage. Nur noch Enter drücken. Klappt das Öffnen nicht, kopiert das Programm die Frage: mit <code>Strg+V</code> einfügen.</p>
+  </div>
+
+  <div class="karte">
+    <h2 style="margin-top:0">Noch bequemer: Erweiterung für Claude Desktop</h2>
+    <p>Dann sieht Claude selbst, an welcher Aufgabe du sitzt, und kann dir Zusatzaufgaben anlegen. Einmal einrichten (braucht <b>Claude Desktop</b>):</p>
+    <div class="zeile" style="margin-bottom:5px"><div class="nr">1</div><div>Claude Desktop öffnen → <b>Einstellungen → Erweiterungen</b>.</div></div>
+    <div class="zeile" style="margin-bottom:5px"><div class="nr">2</div><div>Auf <b>„Erweiterung installieren…“</b> klicken (manchmal unter „Erweiterte Einstellungen“) und die Datei <code>python-tutor.mcpb</code> wählen. Du findest sie im Programm: links auf <b>„Claude verbinden“</b>, dann der Knopf <b>„Datei im Ordner zeigen“</b>. Du kannst sie auch direkt ins Fenster ziehen.</div></div>
+    <div class="zeile"><div class="nr">3</div><div>Claude Desktop <b>neu starten</b>, im Programm auf <b>„Verbindung prüfen“</b> klicken. Dort steht dann „Verbunden“.</div></div>
+    <div class="hinweis info"><div class="sym">i</div><div>Beim Öffnen von Claude steht oben eine Warnung. Sie ist normal. Steht dort „Cowork“, wähle „Chat“.</div></div>
+    <div class="hinweis ok"><div class="sym">✓</div><div>Geht die Erweiterung bei dir nicht, ist das kein Problem: Die Knöpfe funktionieren auch so. Eine Zusatzaufgabe holst du dir dann über Claude und fügst sie unter „Extra von Claude“ mit <b>„Aufgabe aus Zwischenablage einfügen“</b> ein.</div></div>
+  </div>
+
+  <div class="karte" style="margin-top:4mm">
+    <h2 style="margin-top:0">Wenn etwas nicht klappt</h2>
+    <ul>
+      <li><b>Windows blockiert die Installation:</b> „Weitere Informationen“ → „Trotzdem ausführen“ (siehe Seite 1).</li>
+      <li><b>„Noch nicht verbunden“ bei „Claude verbinden“:</b> Erweiterung installiert und Claude Desktop ganz neu gestartet? Dann nochmal „Verbindung prüfen“.</li>
+      <li><b>Claude Desktop ist nicht installiert:</b> Die Knöpfe öffnen dann claude.ai im Browser. Das geht auch.</li>
+      <li><b>Etwas anderes:</b> Schick Moritz ein Foto von der Meldung.</li>
+    </ul>
+    <p style="margin-top:6px;color:var(--text-2);font-size:9.5pt">Alle Infos und Downloads: <a href="https://github.com/MoritzScharf/python-tutor-app">github.com/MoritzScharf/python-tutor-app</a></p>
+  </div>
+
+  <div class="fuss"><span>Python-Tutor</span><span>Seite 3 von 3</span></div>
+</section>
+
 </body>
 </html>
