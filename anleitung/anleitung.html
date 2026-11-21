@@ -29,7 +29,7 @@
   .seite:last-child { page-break-after: auto; }
 
   .kopf { display: flex; align-items: center; gap: 14px; margin-bottom: 5mm; }
-  .logo { width: 46px; height: 46px; border-radius: 14px; background: var(--kobalt); color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 17pt; letter-spacing: -1px; }
+  .logo { flex: none; width: 48px; height: 48px; display: block; }
   h1 { margin: 0; font-size: 22pt; line-height: 1.1; font-weight: 700; letter-spacing: -.3px; }
   .unter { margin: 2px 0 0; color: var(--text-2); font-size: 10pt; }
 
@@ -73,22 +73,23 @@
 <!-- Seite 1 -->
 <section class="seite">
   <div class="kopf">
-    <div class="logo">&lt;/&gt;</div>
+    <svg class="logo" viewBox="64 64 896 896" aria-hidden="true"><rect x="64" y="64" width="896" height="896" rx="200" fill="#3043d0"/> <path d="M512 196 L812 316 L512 436 L212 316 Z" fill="#ffffff" stroke="#ffffff" stroke-width="24" stroke-linejoin="round"/> <path d="M352 384 L352 470 C430 512 594 512 672 470 L672 384 L512 448 Z" fill="#ffffff"/> <path d="M512 316 L762 350 L762 470" fill="none" stroke="#ffb21e" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="762" cy="486" r="30" fill="#ffb21e"/> <path d="M248 600 L248 688 L322 644 Z" fill="#ffb21e" stroke="#ffb21e" stroke-width="28" stroke-linejoin="round"/> <rect x="380" y="600" width="420" height="88" rx="44" fill="#ffb21e"/> <rect x="440" y="734" width="300" height="88" rx="44" fill="#ffffff"/></svg>
     <div>
       <h1>Python-Tutor</h1>
-      <p class="unter">Anleitung: herunterladen, installieren, loslegen · Stand Version 2.6.0</p>
+      <p class="unter">Anleitung: herunterladen, installieren, loslegen · Stand Version 2.10.1</p>
     </div>
   </div>
 
   <div class="linkbox">
     <p class="klein">Hier lädst du das Programm herunter (Windows). Ein Klick, der Download startet sofort:</p>
-    <a href="https://github.com/MoritzScharf/python-tutor-app/releases/download/v2.6.0/Python-Tutor-Setup-2.6.0.exe">Python-Tutor für Windows herunterladen&nbsp;→</a>
+    <a href="https://github.com/MoritzScharf/python-tutor-app/releases/download/v2.10.1/Python-Tutor-Setup-2.10.1.exe">Python-Tutor für Windows herunterladen&nbsp;→</a>
+    <p class="klein" style="margin-top:6px">Mac: <a href="https://github.com/MoritzScharf/python-tutor-app/releases/download/v2.10.1/Python-Tutor-2.10.1-arm64.dmg">Apple-Chip (M1, M2 …)</a> · <a href="https://github.com/MoritzScharf/python-tutor-app/releases/download/v2.10.1/Python-Tutor-2.10.1-x64.dmg">Intel-Mac</a> (Apfel-Menü → „Über diesen Mac“ zeigt, welcher)</p>
   </div>
 
   <div class="karte">
     <div class="zeile"><div class="nr">1</div><div>
       <h2>Herunterladen</h2>
-      <p>Klick auf den Link oben. Dein Browser lädt sofort die Datei <code>Python-Tutor-Setup-2.6.0.exe</code> herunter (etwa 120&nbsp;MB). Gibt es inzwischen eine neuere Version, holt sich das Programm sie beim ersten Start von selbst.</p>
+      <p>Klick auf den Link oben. Dein Browser lädt die Datei sofort herunter (etwa 125&nbsp;MB). Gibt es eine neuere Version, holt sich das Programm sie selbst.</p>
     </div></div>
   </div>
 
@@ -97,25 +98,32 @@
       <h2>Installieren</h2>
       <p>Doppelklick auf die heruntergeladene Datei. Du brauchst keine Administratorrechte, die Installation läuft von selbst.</p>
       <div class="hinweis warn"><div class="sym">!</div><div>
-        <b>Windows warnt dich einmal</b> („Der Computer wurde durch Windows geschützt“). Das ist normal, das Programm ist nur nicht bei Microsoft „signiert“. Klick auf <b>„Weitere Informationen“</b> und dann auf <b>„Trotzdem ausführen“</b>.
+        <b>Windows warnt dich einmal</b> („Der Computer wurde durch Windows geschützt“). Das ist normal. Klick auf <b>„Weitere Informationen“</b> und dann auf <b>„Trotzdem ausführen“</b>.
       </div></div>
-      <div class="stufen">
-        <span class="stufe">Doppelklick auf die .exe</span><span class="pfeil">→</span>
-        <span class="stufe"><b>Weitere Informationen</b></span><span class="pfeil">→</span>
-        <span class="stufe"><b>Trotzdem ausführen</b></span>
-      </div>
+      <div class="hinweis info"><div class="sym">i</div><div>
+        <b>Auf dem Mac:</b> <code>.dmg</code> öffnen, <b>Python-Tutor</b> in <b>Programme</b> ziehen. Blockiert macOS das Programm beim ersten Start: Meldung schließen, dann <b>Systemeinstellungen → Datenschutz &amp; Sicherheit</b>, ganz unten <b>„Dennoch öffnen“</b>. Das ist nur einmal nötig.
+      </div></div>
     </div></div>
   </div>
 
   <div class="karte">
     <div class="zeile"><div class="nr">3</div><div>
+      <h2>Code eingeben</h2>
+      <p>Beim ersten Start fragt das Programm <b>einmal</b> nach deinem persönlichen <b>Zugangscode</b> (so sieht er aus: <code>PYT-XXXXX-XXXXX</code>). Den hast du von der Person bekommen, von der du den Link hast. Tippe ihn ein und klicke auf <span class="knopf" style="padding:2px 11px;font-size:9.5pt">Freischalten</span>. Dazu braucht das Programm einmal Internet. Jeder Code gilt für ein Gerät.</p>
+      <div class="hinweis info"><div class="sym">i</div><div>
+        <b>Noch kein Code?</b> Das Programm ist in der <b>Testphase</b> und nur mit Code benutzbar. Schreib der Person, von der du diese Anleitung hast, dann bekommst du einen Code.
+      </div></div>
+    </div></div>
+  </div>
+
+  <div class="karte">
+    <div class="zeile"><div class="nr">4</div><div>
       <h2>Loslegen</h2>
-      <p>Nach der Installation startet der <b>Python-Tutor</b> von selbst. Du findest ihn danach im Startmenü und auf dem Desktop. Python bringt das Programm selbst mit, du musst nichts weiter installieren.</p>
+      <p>Nach der Installation startet der <b>Python-Tutor</b> von selbst. Du findest ihn danach im Startmenü bzw. unter Programme, am Symbol mit dem <b>Doktorhut</b>.</p>
       <ul>
         <li><b>Links</b> wählst du ein Kapitel und ein Thema. Dort stehen Erklärungen und Beispiele.</li>
         <li>In jeder <b>Aufgabe</b> schreibst du Code, klickst auf <span class="knopf" style="padding:2px 11px;font-size:9.5pt">Ausführen</span> und dann auf <span class="knopf" style="padding:2px 11px;font-size:9.5pt">Prüfen</span>. Die Tests zeigen dir, was noch fehlt.</li>
         <li>Mit <span class="knopf mango" style="padding:2px 11px;font-size:9.5pt">Schritt für Schritt</span> siehst du, wie dein Programm Zeile für Zeile abläuft.</li>
-        <li>Unten links kannst du zwischen <b>System</b>, <b>Hell</b> und <b>Dunkel</b> wählen.</li>
       </ul>
     </div></div>
   </div>
@@ -124,48 +132,47 @@
     <b>Dein Lernstand bleibt erhalten.</b> Fortschritt und Code liegen im Ordner <code>Dokumente\Python-Tutor-Daten</code>. Bitte nicht löschen. Bei Updates und beim Deinstallieren bleibt er unangetastet.
   </div></div>
 
-  <div class="karte" style="margin-top:4mm">
-    <h2 style="margin-top:0">Nutzungsdaten (freiwillig)</h2>
-    <p style="margin:2px 0 4px">Das Programm fragt einmal, ob es melden darf, wie du lernst, auch Fehlermeldungen. Die Meldungen sind <b>pseudonym</b>: ohne Name, ohne IP-Adresse, nur mit einer Zufallsnummer. Nie dein Code, deine Eingaben, Pfade oder dein Name.</p>
-    <ul style="margin:0;padding-left:18px">
-      <li>Speicherort: Cloudflare (USA, Server in der EU), nach 180 Tagen automatisch gelöscht.</li>
-      <li>Ausschalten wirkt nur für die Zukunft (links unten „Datenschutz und Statistik“). Verantwortlich: der Entwickler dieses Programms; Fragen an die Person, von der du es hast.</li>
-    </ul>
-  </div>
-
   <div class="fuss"><span>Python-Tutor</span><span>Seite 1 von 3</span></div>
 </section>
 
 <!-- Seite 2 -->
 <section class="seite">
   <div class="kopf">
-    <div class="logo">&lt;/&gt;</div>
+    <svg class="logo" viewBox="64 64 896 896" aria-hidden="true"><rect x="64" y="64" width="896" height="896" rx="200" fill="#3043d0"/> <path d="M512 196 L812 316 L512 436 L212 316 Z" fill="#ffffff" stroke="#ffffff" stroke-width="24" stroke-linejoin="round"/> <path d="M352 384 L352 470 C430 512 594 512 672 470 L672 384 L512 448 Z" fill="#ffffff"/> <path d="M512 316 L762 350 L762 470" fill="none" stroke="#ffb21e" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="762" cy="486" r="30" fill="#ffb21e"/> <path d="M248 600 L248 688 L322 644 Z" fill="#ffb21e" stroke="#ffb21e" stroke-width="28" stroke-linejoin="round"/> <rect x="380" y="600" width="420" height="88" rx="44" fill="#ffb21e"/> <rect x="440" y="734" width="300" height="88" rx="44" fill="#ffffff"/></svg>
     <div>
       <h1>Was du alles machen kannst</h1>
-      <p class="unter">Alles, was im Programm steckt, mit den Neuerungen bis Version 2.6.0</p>
+      <p class="unter">Alles, was im Programm steckt, mit den Neuerungen bis Version 2.10.1</p>
     </div>
   </div>
 
   <div class="funktionen">
     <div class="karte">
       <h2>Lektionen und Aufgaben</h2>
-      <p>8 Kapitel von <code>print</code> bis zu Klassen und über 180 Aufgaben aus dem Alltag: Mensa, WG-Kasse, Kino …</p>
+      <p>8 Kapitel von <code>print</code> bis zu Klassen und 270 Aufgaben aus dem Alltag: Mensa, WG-Kasse, Kino …</p>
     </div>
     <div class="karte">
       <h2>Probeklausur</h2>
       <p>Links unter <b>„Probeklausur“</b>: wie eine echte Klausur, mit Zeit und Auswertung am Ende.</p>
     </div>
     <div class="karte frisch">
+      <h2>Dein Stand pro Thema<span class="neu">NEU 2.10</span></h2>
+      <p>Vor jedem Thema zeigt ein Zeichen, wie es steht: noch nicht angefangen, auf dem Weg, wackelt noch oder sitzt. Unter <b>„Üben und wiederholen“</b> nennt <b>„Dein nächster Schritt“</b>, was jetzt am meisten bringt.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Selbsttest und Wiederholen<span class="neu">NEU 2.10</span></h2>
+      <p>Am Ende jeder Lektion 4 Fragen zum Thema, freiwillig. Falsch beantwortete kommen mit den gelösten Aufgaben nach 1, 3, 7 und 14 Tagen zurück (höchstens 5 am Tag), unter <b>„Üben und wiederholen“</b>.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Neue Aufgabenarten<span class="neu">NEU 2.10</span></h2>
+      <p><b>Ablauf protokollieren:</b> Welchen Wert hat jede Variable nach jeder Zeile? <b>Meldung lesen:</b> Zeile, Bedeutung und Behebung eines echten Fehlers. Dazu die <b>Code-Puzzles</b>, in denen du Zeilen ordnest.</p>
+    </div>
+    <div class="karte frisch">
+      <h2>Fehler besser verstehen<span class="neu">NEU 2.8</span></h2>
+      <p>Klappt ein Test nicht, sagt ein Satz unter „Erhalten“, was abweicht (zum Beispiel ein Leerzeichen zu viel). Oft derselbe Fehler? Dann zeigt die Karte <b>„Dein häufigster Fehler“</b> einen Tipp. In der Probeklausur gibt es keine Hilfe.</p>
+    </div>
+    <div class="karte frisch">
       <h2>Zeichnen mit der Schildkröte<span class="neu">NEU 2.6</span></h2>
-      <p>Neue Aufgaben, bei denen dein Code ein Bild malt. Auf der Seite <b>„Frei zeichnen“</b> probierst du einfach aus. Auch im Schritt-für-Schritt-Modus siehst du, wie die Zeichnung entsteht.</p>
-    </div>
-    <div class="karte frisch">
-      <h2>Code ordnen<span class="neu">NEU 2.5</span></h2>
-      <p>Code-Puzzles: Die Zeilen eines fertigen Programms sind durcheinander. Bring sie in die richtige Reihenfolge und Einrückung, mit Maus oder Tastatur. In jedem Thema der Kapitel 1–3.</p>
-    </div>
-    <div class="karte frisch">
-      <h2>Aufwärm-Runde<span class="neu">NEU 2.4</span></h2>
-      <p>Gelöste Aufgaben kommen nach 1, 3, 7 und 14 Tagen kurz zurück, höchstens 5 am Tag. Links unter <b>„Üben und wiederholen“</b>. Dein gespeicherter Code bleibt dabei unberührt.</p>
+      <p>Aufgaben, bei denen dein Code ein Bild malt. Auf der Seite <b>„Frei zeichnen“</b> probierst du einfach aus.</p>
     </div>
     <div class="karte frisch">
       <h2>Erst raten, dann sehen<span class="neu">NEU 2.4</span></h2>
@@ -200,7 +207,7 @@
 <!-- Seite 3 -->
 <section class="seite">
   <div class="kopf">
-    <div class="logo">&lt;/&gt;</div>
+    <svg class="logo" viewBox="64 64 896 896" aria-hidden="true"><rect x="64" y="64" width="896" height="896" rx="200" fill="#3043d0"/> <path d="M512 196 L812 316 L512 436 L212 316 Z" fill="#ffffff" stroke="#ffffff" stroke-width="24" stroke-linejoin="round"/> <path d="M352 384 L352 470 C430 512 594 512 672 470 L672 384 L512 448 Z" fill="#ffffff"/> <path d="M512 316 L762 350 L762 470" fill="none" stroke="#ffb21e" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="762" cy="486" r="30" fill="#ffb21e"/> <path d="M248 600 L248 688 L322 644 Z" fill="#ffb21e" stroke="#ffb21e" stroke-width="28" stroke-linejoin="round"/> <rect x="380" y="600" width="420" height="88" rx="44" fill="#ffb21e"/> <rect x="440" y="734" width="300" height="88" rx="44" fill="#ffffff"/></svg>
     <div>
       <h1>Hilfe von Claude</h1>
       <p class="unter">Optional: mit deinem eigenen Claude-Konto</p>
@@ -231,6 +238,11 @@
       <li><b>Etwas anderes:</b> Schick Moritz ein Foto von der Meldung.</li>
     </ul>
     <p style="margin-top:6px;color:var(--text-2);font-size:9.5pt">Alle Infos und Downloads: <a href="https://github.com/MoritzScharf/python-tutor-app">github.com/MoritzScharf/python-tutor-app</a></p>
+  </div>
+
+  <div class="karte" style="margin-top:4mm">
+    <h2 style="margin-top:0">Nutzungsdaten (freiwillig)</h2>
+    <p style="margin:2px 0 0">Das Programm fragt einmal, ob es melden darf, wie du lernst, auch Fehlermeldungen. Die Meldungen sind <b>pseudonym</b>: ohne Name, ohne IP-Adresse, nur mit einer Zufallsnummer, nie dein Code, deine Eingaben oder Pfade. Speicherort: Cloudflare (Server in der EU), nach 180 Tagen gelöscht. Ausschalten geht links unten unter „Datenschutz und Statistik“. Fragen an die Person, von der du das Programm hast.</p>
   </div>
 
   <div class="fuss"><span>Python-Tutor</span><span>Seite 3 von 3</span></div>
